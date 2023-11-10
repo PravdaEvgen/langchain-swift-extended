@@ -17,11 +17,11 @@ public protocol Tool {
     func _run(args: String) async throws -> String
 }
 open class BaseTool: NSObject, Tool {
-    open static let TOOL_REQ_ID = "tool_req_id"
-    open static let TOOL_COST_KEY = "cost"
-    open static let TOOL_NAME_KEY = "tool_name"
-    open let callbacks: [BaseCallbackHandler]
-    open init(callbacks: [BaseCallbackHandler] = []) {
+    public static let TOOL_REQ_ID = "tool_req_id"
+    public static let TOOL_COST_KEY = "cost"
+    public static let TOOL_NAME_KEY = "tool_name"
+    public let callbacks: [BaseCallbackHandler]
+    public init(callbacks: [BaseCallbackHandler] = []) {
         var cbs: [BaseCallbackHandler] = callbacks
         if Env.addTraceCallbak() && !cbs.contains(where: { item in item is TraceCallbackHandler}) {
             cbs.append(TraceCallbackHandler())
